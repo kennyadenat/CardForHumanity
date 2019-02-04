@@ -40,8 +40,8 @@ angular.module('mean.system')
             $http.post('http://localhost:3000/api/auth/signup', signupObject)
           ])
           .then(function (results) {
-            deferred.resolve(response);
-            //return results[0].data;
+            //deferred.resolve(results);
+            return results[0].data;
           });
       }
     };

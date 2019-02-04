@@ -12,7 +12,9 @@ angular.module('mean.system')
         $scope.signUp = function(){            
              SignupService.signupUser($scope.SignUp)
                  .then(function (data) {
-                     console.log(data);
+                     if (data){
+                         $location.path('/');
+                     }
                  });
         };
     }]);

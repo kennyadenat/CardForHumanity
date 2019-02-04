@@ -94,11 +94,10 @@ exports.create = function (req, res) {
 
         user.save(function (err) {
           if (err) {
-            // return res.render('/#!/signup?error=unknown', {
-            //   errors: err.errors,
-            //   user: user
-            // });
-            console.log(err);
+            return res.render('/#!/signup?error=unknown', {
+              errors: err.errors,
+              user: user
+            });
           }
 
           jwt.sign(req.body, config.secret, {
