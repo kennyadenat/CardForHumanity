@@ -87,16 +87,18 @@ exports.create = function (req, res) {
 
       if (!existingUser) {
         var user = new User(req.body);
+          user.username = req.body.email;
         // Switch the user's avatar index to an actual avatar url
         user.avatar = avatars[user.avatar];
         user.provider = 'local';
 
         user.save(function (err) {
           if (err) {
-            return res.render('/#!/signup?error=unknown', {
-              errors: err.errors,
-              user: user
-            });
+            // return res.render('/#!/signup?error=unknown', {
+            //   errors: err.errors,
+            //   user: user
+            // });
+            console.log(err);
           }
 
           jwt.sign(req.body, config.secret, {

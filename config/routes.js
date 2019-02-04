@@ -14,7 +14,8 @@ module.exports = function(app, passport, auth) {
     
 
     //Setting up the users api
-    app.post('/api/auth/signup', function(req, res){         
+    app.post('/api/auth/signup', function(req, res){ 
+        console.log(req.body);       
         users.create(req, res, function(err, user){ 
            
          });
