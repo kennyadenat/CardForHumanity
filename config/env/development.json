@@ -21,5 +21,6 @@
         "clientID": "APP_ID",
         "clientSecret": "APP_SECRET",
         "callbackURL": "http://cardsforhumanity.com:3000/auth/google/callback"
-    }
+    },
+    "db": "mongodb://localhost:27017/humanity"
 }

@@ -16,14 +16,20 @@ var express = require('express'),
 //if test env, load example file
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     config = require('./config/config'),
+    dbUrl = require('./config/env/all').db;
     auth = require('./config/middlewares/authorization'),
     mongoose = require('mongoose');
 
+    console.log(dbUrl);
+
 //Bootstrap db connection
-var db = mongoose.connect(config.db);
+var db = mongoose.connect(dbUrl, { useNewUrlParser: true });
+
+var routes = require('./config/routes');
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';
+
 var walk = function(path) {
     fs.readdirSync(path).forEach(function(file) {
         var newPath = path + '/' + file;

@@ -12,11 +12,11 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-    name: String,
-    email: String,
-    username: String,
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    username: { type: String, required: true },
     provider: String,
-    avatar: String,
+    avatar: { type: String, required: true },
     premium: Number, // null or 0 for non-donors, 1 for everyone else (for now)
     donations: [],
     hashed_password: String,
@@ -112,4 +112,4 @@ UserSchema.methods = {
     }
 };
 
-mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

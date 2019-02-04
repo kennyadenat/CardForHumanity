@@ -5,6 +5,7 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
+    dbUrl = require('./env/all').db;
     config = require('./config');
 
 module.exports = function(app, passport, mongoose) {
@@ -46,7 +47,7 @@ module.exports = function(app, passport, mongoose) {
         app.use(express.session({
             secret: 'MEAN',
             store: new mongoStore({
-                url: config.db,
+                url: dbUrl,
                 collection: 'sessions',
                 mongoose_connection: mongoose.connection
             })

@@ -1,4 +1,4 @@
-<div id="main-bod">
+<div id="main-bod" ng-controller="SignupController">
   <!-- Fixed Logo & Menu Bar Start -->
   <div id="top-part">
     <div class="wpb-top-bar">
@@ -41,36 +41,37 @@
 
       <div class="sign-body">
         <div class="more-sign">
-          <form class="signup form-horizontal" action="/users" method="post">
+          <form class="signup form-horizontal" novalidate autocomplete="off" name="signup">
             <div class="control-group">
               <label for="name" class="control-label"></label>
               <div class="controls">
-                <input class="input-info" id="name" type="text" name="name" placeholder="Full name" required novalidate />
+                <input class="input-info" id="name" type="text" name="name" placeholder="Full name" required novalidate ng-model="SignUp.name"/>
               </div>
             </div>
             <div class="control-group">
               <label for="email" class="control-label"></label>
               <div class="controls">
-                <input class="input-info" id="email" type="email" name="email" placeholder="Email" required novalidate />
+                <input class="input-info" id="email" type="text" name="email" ng-pattern="eml_add" placeholder="Email" required ng-model="SignUp.email"/>
+            <span class="red-text" ng-show="SignUp.email.$error.pattern">Invalid Email</span>
               </div>
             </div>
             <div class="control-group">
               <label for="password" class="control-label"></label>
               <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" placeholder="Password" required novalidate />
+                <input class="input-info" id="password" type="password" name="password" placeholder="Password" required novalidate ng-model="SignUp.password"/>
               </div>
             </div>
             <div id="contain-avatars">
               <ul ng-controller="IndexController" class="avatar-list">
                 <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                  <input name="avatar" type='radio' value="{{$index}}">
+                  <input name="avatar" type='radio' value="{{$index}}" required ng-model="SignUp.avatar">
                     <img ng-src="{{avatar}}">
                   </input>
                 </li>
               </ul>
             </div>
             <div class="form-actions">
-              <button id="sign-up-btn-other" type='submit'>Sign Up</button>
+              <button id="sign-up-btn-other" type='submit' ng-disabled="signup.$error.required" ng-click="signUp()">Sign Up</button>
             </div>
           </form>
         </div>

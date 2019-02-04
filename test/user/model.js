@@ -6,6 +6,8 @@ var should = require('should'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
+    
+
 //Globals
 var user;
 
@@ -15,9 +17,10 @@ describe('<Unit Test>', function() {
         before(function(done) {
             user = new User({
                 name: 'Full name',
-                email: 'test@test.com',
+                email: 'test1@test.com',
                 username: 'user',
-                password: 'password'
+                password: 'password',
+                avatar: '7'
             });
 
             done();
