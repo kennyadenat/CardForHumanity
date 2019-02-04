@@ -32,6 +32,20 @@ angular.module('mean.system')
       }
     };
   }])
+  
+ .factory('SignupService', ['$http', '$q', function ($http, $q) {
+    return {
+      signupUser: function (signupObject) {
+        return $q.all([
+            $http.post('http://localhost:3000/api/auth/signup', signupObject)
+          ])
+          .then(function (results) {
+            //deferred.resolve(results);
+            return results[0].data;
+          });
+      }
+    };
+ }])
   .factory('MakeAWishFactsService', [function() {
     return {
       getMakeAWishFacts: function() {

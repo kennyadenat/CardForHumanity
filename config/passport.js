@@ -4,6 +4,10 @@ var mongoose = require('mongoose'),
     FacebookStrategy = require('passport-facebook').Strategy,
     GitHubStrategy = require('passport-github').Strategy,
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+ 
+    JwtStrategy = require('passport-jwt').Strategy,
+    ExtractJwt = require('passport-jwt').ExtractJwt,
+    
     User = mongoose.model('User'),
     config = require('./config');
 

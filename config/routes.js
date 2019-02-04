@@ -1,4 +1,7 @@
 var async = require('async');
+var passport = require('passport');
+
+var mongoose = require('mongoose');
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -8,7 +11,19 @@ module.exports = function(app, passport, auth) {
     app.get('/chooseavatars', users.checkAvatar);
     app.get('/signout', users.signout);
 
+    
+
     //Setting up the users api
+    app.post('/api/auth/signup', function(req, res){ 
+        console.log(req.body);       
+        users.create(req, res, function(err, user){ 
+           
+         });
+
+     });
+
+
+     
     app.post('/users', users.create);
     app.post('/users/avatars', users.avatars);
 
